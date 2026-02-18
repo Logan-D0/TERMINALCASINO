@@ -34,7 +34,7 @@ STAY_AT_TABLE_PROMPT   = "🤵: Would you like to stay at the table?"
 INVALID_CHOICE_MSG     = "🤵: That's not a choice in this game."
 NO_FUNDS_MSG           = "🤵: You don't have enough chips to play. Goodbye."
 
-FULL_DECK: StandardDeck = StandardDeck()
+FULL_DECK: StandardDeck = StandardDeck()    #this is what generates the deck
 
 
 def deal_card(turn: list[StandardCard], deck: StandardDeck) -> None:
@@ -252,7 +252,10 @@ def play_poker(ctx: GameContext) -> None:
         current_bet = 20 #  + big blind (10 + 20)
         player_folded = False
 
-        deck = FULL_DECK
+        FULL_DECK = StandardDeck()  #fulldeck is assigned to a NEW set of 52 cards, could probably remove fulldeck entirely to solve this problem.
+        deck = FULL_DECK    #originally said "deck = FULL_DECK", where fulldeck was defined earlier.
+                            #this meant that eventually, "fulldeck" would run out of cards and deck would become
+                            #an empty list since deck kept being assigned to the same object.
 
         player_hand = []
         opponent_hand = []

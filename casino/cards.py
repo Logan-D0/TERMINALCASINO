@@ -78,6 +78,7 @@ class Deck(ABC):
         random.shuffle(self.cards)
 
     def draw(self) -> Card:
+        print(f"list of cards:  {self.cards}")
         return self.cards.pop()
     
     def append(self, card: Card) -> None:
